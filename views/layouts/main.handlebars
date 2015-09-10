@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="User Authentication">
+  <meta name="author" content="">
+  <title>jbQik</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//fontawesome.io/assets/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/jbQikBits.css">
+  <link rel="icon"
+      type="image/ico"
+      href="assets/favicon.ico">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#navbar-collapsed" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">jbQik</a>
+      {{#if user}}
+        <p class="navbar-text bg-warning">
+          Logged in as {{user.login}}
+        </p>
+      {{else}}
+        <p class="navbar-text bg-warning">
+          You are not logged in. Click <a href="/login">here</a><br/>
+        </p>
+      {{/if}}
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapsed">
+      {{#if user}}
+        <a href="/logout" class="btn btn-default navbar-btn navbar-right"><i class="fa fa-power-off"></i></a>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- where our other templates will insert -->
+  {{{body}}}
+
+</div>
+<div class="container">
+	<div class="row">
+		        <div id="inbox">
+          <div class="fab btn-group show-on-hover dropup">
+              <div data-toggle="tooltip" data-placement="left" title="Compose" style="margin-left: 42px;">
+          <button type="button" class="btn btn-success btn-io dropdown-toggle" data-toggle="dropdown">
+            <span class="fa-stack fa-2x">
+                <i class="fa fa-circle fa-stack-2x fab-backdrop"></i>
+                <i class="fa fa-pencil-square-o fa-stack-1x fa-inverse fab-primary"></i>
+                <i class="fa fa-cogs fa-stack-1x fa-inverse fab-secondary"></i>
+            </span>
+          </button></div>
+          <ul id="show_menu" class="dropdown-menu dropdown-menu-right no-display" role="menu">
+            {{#if user}}
+            <li><a href="/bit" data-toggle="tooltip" data-placement="top" title="Create Event"><i class="fa fa-calendar-plus-o"></i></a></li>
+            <li><a href="/post" data-toggle="tooltip" data-placement="top" title="Create Topic"><i class="fa fa-pencil"></i></a></li>
+            <li><a href="/" data-toggle="tooltip" data-placement="top" title="View Timeline"><i class="fa fa-calendar"></i></a></li>
+            <li><a href="/posts" data-toggle="tooltip" data-placement="top" title="View Topics"><i class="fa fa-eye"></i></a></li>
+            {{else}}
+              <li><a href="/login" data-toggle="tooltip" data-placement="top" title="Login"><i class="fa fa-user"></i></a></li>
+            {{/if}}
+          </ul>
+        </div>
+        </div>
+	</div>
+</div>
+<footer>
+  <div class="container">
+    <p class="pull-left text-muted"><small> &copy; by brnzpub</small></p>
+  </div>
+</footer>
+<!-- Latest compiled and minified JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="assets/js/jbQikBits.js"></script>
+<script>
+$(function() {
+  $('.timeline-panel').click(function() {
+    $('.timeline-body', this).toggle();
+    $('#more-details i', this).toggleClass('fa-plus fa-minus');
+  });
+  $('.fab').click(function () {
+    $(this).toggleClass('active');
+    $('ul.dropdown-menu').toggleClass('display no-display');
+  });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+});
+</script>
+</body>
+</html>

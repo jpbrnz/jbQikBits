@@ -1,0 +1,29 @@
+<h1>Welcome! <small>Viewing the Timeline</small></h1>
+<hr>
+<!-- Timeline -->
+<div class="container">
+  <ul class="timeline">
+{{#if bits}}
+  {{#each bits}}
+        <li>
+            <div class="timeline-badge"><i class="fa fa-{{icon}}"></i>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                     <h4 class="timeline-title">{{this.title}}</h4>
+
+                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{this.publishDate}}</small> | 
+                    <span id="more-details"><small class="text-muted"><i class="fa fa-plus"></i> Details</small></span></p>
+                </div>
+                <div class="timeline-body">
+                    <p>{{this.content}}</p>
+                </div>
+            </div>
+        </li>
+  {{/each}}
+
+</ul>
+</div>
+{{else}}
+  <p>There are no published posts to display.</p>
+{{/if}}

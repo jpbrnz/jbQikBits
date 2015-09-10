@@ -1,0 +1,75 @@
+<h1>All Topics</h1>
+<hr>
+{{#if posts}}
+  {{#each posts}}
+  <div class="box">
+                  <div class="box-icon">
+                      <span class="fa fa-4x fa-edit"></span>
+                  </div>
+                  <div class="info">
+    <div class="posts" ng-app>
+      <h4>{{this.title}}</h4>
+      <p><small><strong>Publishing date: {{this.publishDate}}</strong></small></p>
+        {{{this.content}}}
+<hr>
+      <h4>Comments</h4>
+      {{#if this.comments}}
+          {{#each comments}}
+              <div class="comment">
+                <strong>{{this.name}}:</strong> {{this.content}}
+              </div>
+          {{/each}}
+      {{else}}
+          <p>There are no comments yet on this post.</p>
+      {{/if}}
+
+      <h4>Write a comment</h4>
+
+      <form name="commentForm{{this._id}}" action="comment" method="post">
+        <input name="postid" type="hidden" value="{{this._id}}"/>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+
+          <div class="row">
+            <div class="col-md-6 status-name">
+              <input type="text" class="form-control input-sm" name="name" placeholder="Name" ng-model="name{{this._id}}" ng-required="true"/>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="widget-area no-padding blank">
+              								<div class="status-upload">
+
+              										<textarea name="content" placeholder="Write your comment here" ng-model="content{{this._id}}" ng-required="true" ></textarea>
+                                                    <ul>
+                                                    											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                                                    											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                                                    											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                                                    											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                                    										</ul>
+              										<input type="submit" value="Post comment" class="btn btn-primary btn-xs pull-right" ng-disabled="commentForm{{this._id}}.$invalid"/>
+
+              								</div><!-- Status Upload  -->
+              							</div><!-- Widget Area -->
+              						</div>
+                                    <!-- <textarea name="content" class="form-control input-sm" rows="4" cols="50" maxlength="1000"
+                        placeholder="Write your comment here" ng-model="content{{this._id}}" ng-required="true"></textarea> -->
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <input type="submit" value="Post comment" class="btn btn-primary btn-xs" ng-disabled="commentForm{{this._id}}.$invalid"/>
+        </div> -->
+      </form>
+    </div>
+        </div>
+        <br><br>
+  {{/each}}
+{{else}}
+  <p>There are no published posts to display.</p>
+{{/if}}

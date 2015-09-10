@@ -1,0 +1,48 @@
+
+{{#if errors}}
+	<div class="alert alert-danger" role="alert">
+		<strong>Something went wrong!</strong>
+		<ul class="errors">
+			{{#each errors}}
+				<li>{{this}}</li>
+			{{/each}}
+		</ul>
+	</div>
+{{/if}}
+<div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" action="/login" method="post">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="{{everyauth.password.loginFormFieldName}}" value="{{email}}" autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="{{everyauth.password.passwordFormFieldName}}">
+                <input type="submit" value="Sign in" class="btn btn-primary" />
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+				<p class="bg-warning"><small>Hint: info@brnzpub.com - test123</small></p>
+				<p><small>Please enter your e-mail and password to log in.</small></p>
+    </div><!-- /container -->
+
+<!-- <form action="/login" method="post">
+	<div class="form-group">
+		<label for="{{everyauth.password.loginFormFieldName}}">User</label>
+        <div class="row">
+            <div class="col-xs-4">
+              <input type="text" class="form-control" name="{{everyauth.password.loginFormFieldName}}" value="{{email}}" />
+            </div>
+         </div>
+	</div>
+	<div class="form-group">
+		<label for="{{everyauth.password.passwordFormFieldName}}">Password</label>
+        <div class="row">
+            <div class="col-xs-4">
+              <input type="password" class="form-control" name="{{everyauth.password.passwordFormFieldName}}" />
+            </div>
+        </div>
+	</div>
+	<div class="form-group">
+		<input type="submit" value="Sign in" class="btn btn-primary" />
+	</div>
+</form> -->

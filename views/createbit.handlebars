@@ -1,0 +1,53 @@
+<div ng-app>
+	<h2>Create an Event</h2>
+
+	<form name="createBitForm" action="/bit" method="post">
+		<div class="form-group">
+			<label>Icon for this event:</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio1" value="check-square"> <i class="fa fa-check-square"></i>
+			</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio2" value="thumbs-up"> <i class="fa fa-thumbs-up"></i>
+			</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio3" value="trophy"> <i class="fa fa-trophy"></i>
+			</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio4" value="bomb"> <i class="fa fa-bomb"></i>
+			</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio5" value="magic"> <i class="fa fa-magic"></i>
+			</label>
+			<label class="radio-inline">
+  		<input type="radio" name="icon" id="inlineRadio6" value="plane"> <i class="fa fa-plane"></i>
+			</label>
+			<label class="radio-inline">
+			<input type="radio" name="icon" id="inlineRadio7" value="thumb-tack"> <i class="fa fa-thumb-tack"></i>
+			</label>
+			<label class="radio-inline">
+			<input type="radio" name="icon" id="inlineRadio7" value="thumb-smile-o"> <i class="fa fa-smile-o"></i>
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" class="form-control" name="title" placeholder="Title" ng-required="true" />
+		</div>
+
+		<div class="form-group">
+			<label for="publishdate">Publication date</label>
+			<input type="date" class="form-control" ng-model="publishdate" name="publishdate" ng-required="true" placeholder="yyyy-MM-dd" />
+			<p>The post will be published: \{{publishdate | date:'mediumDate'}}</p>
+		</div>
+
+		<div class="form-group">
+			<label for="content">Details</label>
+			<textarea name="content" class="form-control" rows="8" cols="50" maxlength="1500" ng-minlength="1"
+                      ng-required="true" ng-model="contenttext" ng-trim="false" placeholder="Write your post here"></textarea>
+			<span class="form-help">\{{1500-contenttext.length}} characters remaining</span>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Create event" class="btn btn-primary" ng-disabled="createBitForm.$invalid" />
+		</div>
+	</form>
+</div>
